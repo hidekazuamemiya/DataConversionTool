@@ -1,0 +1,22 @@
+spring:
+# THYMELEAF (ThymeleafAutoConfiguration)
+  thymeleaf:
+    enabled: true
+    cache: false
+settings:
+  app:
+    # 変換元DTO（パッケージパス）
+    dtoIn: com.example.demo.dto.in
+    # 変換先DTO（パッケージパス）
+    dtoOut: com.example.demo.dto.out
+    # 変換設定情報
+    convertFile: c:/tmp/convert.properties
+    # ユーザファンクション
+    userFunction: com.example.demo.service.FunctionService
+    # 変換元DATA（EXCELファイル配置場所）
+    dataIn: data/in
+    # アフターファンクションクラス
+    afterFunctionService: com.example.demo.service.AfterFunctionService
+    # アフターファンクションメソッド名
+    afterFunction: afterFunction
+    

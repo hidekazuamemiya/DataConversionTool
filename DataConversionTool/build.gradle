@@ -1,0 +1,59 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.3.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+jar.baseName = 'DataConversionTool'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	runtime('org.springframework.boot:spring-boot-devtools')
+	compile('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect')
+	compileOnly 'org.projectlombok:lombok:1.18.2'
+	compile('org.slf4j:slf4j-api:1.7.21')
+	compile('org.apache.commons:commons-lang3:3.7')
+	compile(group: 'org.apache.poi', name : 'poi', version: '3.17')
+	compile(group: 'org.apache.poi', name : 'poi-ooxml', version: '3.17') {
+		exclude group: 'stax', module: 'stax-api'
+	}
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('junit:junit:4.12')
+}
+
+apply plugin: 'jacoco'
+jacoco {
+    toolVersion = "0.7.5.+"
+}
+
+//jacocoTestReport {
+//    group = "Reporting"
+//    description = "Generate Jacoco coverage reports after running tests."
+//    additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
+//    reports {
+//        xml.enabled false
+//        csv.enabled false
+//        html.destination "${buildDir}/reports/jacoco"
+//        sourceSets sourceSets.main
+//    }
+//}
